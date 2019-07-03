@@ -1,0 +1,15 @@
+<section id="weather-results" *ngIf="show">	
+	<h2>Weather in {{ details.name | uppercase }}</h2>
+	<h3>@ {{ details.dt * 1000 | date:'medium' }}</h3>
+	
+	<ul>
+		<li class="current"><img src="http://openweathermap.org/img/wn/{{ details.weather[0].icon }}@2x.png"><span>{{ details.main.temp | number:'1.0-0' }}&deg; F</span></li>
+		<li>Humidity: {{ details.main.humidity | number:'1.0-0' }}</li>
+		<li>{{ details.weather[0].description | titlecase }}</li>
+		<li>Low: {{ details.main.temp_min | number:'1.0-0' }}&deg; F</li>
+		<li>High: {{ details.main.temp_max | number:'1.0-0' }}&deg; F</li>
+	</ul>
+</section>
+<section *ngIf="empty">
+	Sorry. No weather data found.
+</section>
